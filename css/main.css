@@ -1,0 +1,204 @@
+body,ul,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /*margin: 0 auto;*/
+}
+
+.container .pop-up {
+    display: block;
+    /*width: 1100px;*/
+    /*height: 640px;*/
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0);
+    /*background-color: rgba(242,242,242,0.2);*/
+}
+
+.start-box {
+    width: 200px;
+    border-radius: 10px;
+    /*height: inherit;*/
+    /*width: inherit;*/
+    background-color: antiquewhite;
+    text-align: center;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+.start-box p{
+    padding: 16px;
+    margin: 0;
+}
+.end-box p{
+    padding: 16px;
+    margin: 0;
+}
+.fun-btn{
+    border-top:1px solid black ;
+}
+
+.container #stop-game-panel {
+    display: none;
+}
+
+.end-box {
+    width: 200px;
+    border-radius: 3px;
+    /*height: inherit;*/
+    /*width: inherit;*/
+    background-color: antiquewhite;
+    text-align: center;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+#tip{
+    position: relative;
+    width: 200px;
+    text-align: center;
+    top:5%;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgb(150,150,150);
+    border-radius: 4px;
+}
+
+/*分页*/
+
+.history .close-history{
+    position: absolute;
+    background-color: white;
+    top:0;
+    right: 0;
+    width: 3vw;
+    height: 5%;
+    font-size: 2vw;
+    text-align: center;
+    cursor: pointer;
+}
+.history{
+    position: absolute;
+    display: none;
+    width: 30%;
+    height: 90%;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(242,242,242,0.5);
+    border: 1px solid rgb(100,100,100);
+    border-radius: 4px;
+    margin: auto 0;
+    z-index: 999;
+}
+.history .title{
+    height: 10%;
+    line-height: 8vh;
+    text-align: center;
+}
+.history .title p{
+    font-size: 2.5vw;
+}
+.history .history-score-box{
+    height: 80%;
+    border: solid white;
+    border-left: 1px;
+    border-right: 1px;
+}
+.history-score-box span{
+    display: inline-block;
+    text-align: center;
+}
+.history-score-box .list-title{
+    height: 8vh;
+    line-height: 7vh;
+    background-color: rgba(242,242,242,1);
+}
+.history-score-box .list-contain{
+    height: 90%;
+}
+
+.history-score-box .rank{
+    width: 15%;
+    font-size: 1vw;
+}
+.history-score-box .time{
+    width: 60%;
+    font-size: 1vw;
+}
+.history-score-box .history-score{
+    width: 15%;
+    font-size: 1vw;
+}
+.history-score-box .list-contain .score-data{
+    height: 8vh;
+    line-height: 8vh;
+}
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    font-family: 'Oxygen', sans-serif;
+    font-size: 20px;
+    display: inline-flex;
+    position: relative;
+}
+.pagination .page-link{
+    padding: 5px 10px;
+}
+.pagination .page-item{
+    margin:0 20px;
+}
+.pagination .page-mark{
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 414px){
+    html{
+        font-size: 64px;
+    }
+}
+@media only screen and (max-width: 375px){
+    html{
+        font-size: 58px;
+    }
+}
+@media only screen and (max-width: 360px){
+    html{
+        font-size: 56px;
+    }
+}
+@media only screen and (max-width: 320px){
+    html{
+        font-size: 50px;
+    }
+}
