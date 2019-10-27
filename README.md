@@ -3,4 +3,4 @@
 
 演示地址为https://clarsw.github.io/flappy_bird/html/flappyBird.html
 
-注意：firefox打开可能画面会卡顿
+
