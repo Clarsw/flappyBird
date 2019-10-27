@@ -1,11 +1,18 @@
-body,ul,p,h1,h2,h3{
+body,
+ul,
+p,
+h1,
+h2,
+h3 {
     margin: 0;
     padding: 0;
 }
-li{
+
+li {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
@@ -38,22 +45,25 @@ canvas {
     /*width: inherit;*/
     background-color: antiquewhite;
     text-align: center;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    margin:auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
-.start-box p{
+
+.start-box p {
     padding: 16px;
     margin: 0;
 }
-.end-box p{
+
+.end-box p {
     padding: 16px;
     margin: 0;
 }
-.fun-btn{
-    border-top:1px solid black ;
+
+.fun-btn {
+    border-top: 1px solid black;
 }
 
 .container #stop-game-panel {
@@ -67,30 +77,30 @@ canvas {
     /*width: inherit;*/
     background-color: antiquewhite;
     text-align: center;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    margin:auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-#tip{
+#tip {
     position: relative;
     width: 200px;
     text-align: center;
-    top:5%;
+    top: 5%;
     margin: 0 auto;
     background-color: white;
-    border: 1px solid rgb(150,150,150);
+    border: 1px solid rgb(150, 150, 150);
     border-radius: 4px;
 }
 
 /*分页*/
 
-.history .close-history{
+.history .close-history {
     position: absolute;
     background-color: white;
-    top:0;
+    top: 0;
     right: 0;
     width: 3vw;
     height: 5%;
@@ -98,91 +108,132 @@ canvas {
     text-align: center;
     cursor: pointer;
 }
-.history{
+
+.history {
     position: absolute;
     display: none;
     width: 30%;
     height: 90%;
-    top:0;
+    top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(242,242,242,0.5);
-    border: 1px solid rgb(100,100,100);
+    background-color: rgba(242, 242, 242, 0.5);
+    border: 1px solid rgb(100, 100, 100);
     border-radius: 4px;
     margin: auto 0;
-    z-index: 999;
+    z-index: 997;
 }
-.history .title{
+
+.history .title {
     height: 10%;
     line-height: 8vh;
     text-align: center;
 }
-.history .title p{
+
+.history .title p {
     font-size: 2.5vw;
 }
-.history .history-score-box{
+
+.history .history-score-box {
     height: 80%;
     border: solid white;
     border-left: 1px;
     border-right: 1px;
 }
-.history-score-box span{
+
+.history-score-box span {
     display: inline-block;
     text-align: center;
 }
-.history-score-box .list-title{
+
+.history-score-box .list-title {
     height: 8vh;
     line-height: 7vh;
-    background-color: rgba(242,242,242,1);
+    background-color: rgba(242, 242, 242, 1);
 }
-.history-score-box .list-contain{
+
+.history-score-box .list-contain {
     height: 90%;
 }
 
-.history-score-box .rank{
+.history-score-box .rank {
     width: 15%;
     font-size: 1vw;
 }
-.history-score-box .time{
+
+.history-score-box .time {
     width: 60%;
     font-size: 1vw;
 }
-.history-score-box .history-score{
+
+.history-score-box .history-score {
     width: 15%;
     font-size: 1vw;
 }
-.history-score-box .list-contain .score-data{
+
+.history-score-box .list-contain .score-data {
     height: 8vh;
     line-height: 8vh;
 }
 
-.pagination-outer{ text-align: center; }
-.pagination{
+.pagination-outer {
+    text-align: center;
+}
+
+.pagination {
     font-family: 'Oxygen', sans-serif;
     font-size: 20px;
     display: inline-flex;
     position: relative;
 }
-.pagination .page-link{
+
+.pagination .page-link {
     padding: 5px 10px;
 }
-.pagination .page-item{
-    margin:0 20px;
+
+.pagination .page-item {
+    margin: 0 20px;
 }
-.pagination .page-mark{
+
+.pagination .page-mark {
     font-size: 16px;
 }
 
+/* 进度条 */
+#progress-box {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(243, 234, 234, .5);
+    z-index: 999;
+}
+
+#myProgress {
+    position: absolute;
+    width: 20%;
+    background-color: #ddd;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: -15px auto 0;
+
+}
+
+#myBar {
+    width: 0%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
 
 
 
 
 
-
-
-
-@media only screen and (max-width: 414px){
+/* @media only screen and (max-width: 414px){
     html{
         font-size: 64px;
     }
@@ -201,4 +252,4 @@ canvas {
     html{
         font-size: 50px;
     }
-}
+} */

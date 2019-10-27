@@ -1,11 +1,10 @@
-'use strict';
+"use strict";
 
-function Pipeline() {
-}
+function Pipeline() {}
 
 let aPipeline = [];
 Pipeline.prototype = {
-    autoCreate: function (aPipeline) {   //自动生成合适上下高度，上下偏移量，左右距离的管道
+    autoCreate: function (aPipeline) { //自动生成合适上下高度，上下偏移量，左右距离的管道
         let betweenX = 0;
         let pipelineX;
         let upPipelineH;
@@ -17,32 +16,31 @@ Pipeline.prototype = {
         let pipelineState = 0;
         // console.log("math: "+(Math.random() * (5 - 3) + 3.5));
         // var pipelineSpace=(Math.floor(Math.random() * (6 - 4+ 1)) + 4)*birdPH;//4-6个小鸟高度
-        let pipelineSpace ;
-        if(gameHard == 1){//难度一
-            if(height >=500){
-                pipelineSpace = ((Math.random() * (5 - 3)) + 3.5) * birdPH;//3.5-5个小鸟高度
-            }else{
-                pipelineSpace = ((Math.random() * (8 - 5)) + 5) * birdPH;//5-8个小鸟高度
+        let pipelineSpace;
+        if (gameHard == 1) { //难度一
+            if (height >= 500) {
+                pipelineSpace = (Math.floor((Math.random() * (7 - 5)) + 5)) * birdPH; //4-6个小鸟高度
+            } else {
+                pipelineSpace = (Math.floor((Math.random() * (10 - 7)) + 7)) * birdPH; //5-8个小鸟高度
             }
-        }else if(gameHard == 2){//难度二
-            if(height >=500){
-                pipelineSpace = ((Math.random() * (4 - 2)) + 2.5) * birdPH;//2.5-4个小鸟高度
-            }else{
-                pipelineSpace = ((Math.random() * (7 - 4)) + 4) * birdPH;//4-7个小鸟高度
+        } else if (gameHard == 2) { //难度二
+            if (height >= 500) {
+                pipelineSpace = (Math.floor((Math.random() * (6 - 4)) + 4)) * birdPH; //2.5-4个小鸟高度
+            } else {
+                pipelineSpace = (Math.floor((Math.random() * (9 - 6)) + 6)) * birdPH; //4-7个小鸟高度
             }
         }
-        // console.log("space : "+pipelineSpace);
-        let allPipelineH = height - floorPH - 2 * pipelineOutPH - pipelineSpace;//管道两端总高度
+        let allPipelineH = height - floorPH - 2 * pipelineOutPH - pipelineSpace; //管道两端总高度
         if (aPipeline.length === 0) { //两个管道中间距离
-            betweenX = Math.ceil(Math.random() * (500 - 400) + 400);
+            betweenX = Math.floor(Math.random() * (600 - 500) + 500);
             pipelineX = betweenX;
         } else {
             // console.log("length :");
-            betweenX = Math.ceil(Math.random() * (width * 0.32 - width * 0.19) + width * 0.19);//(400 - 300) + 300
+            betweenX = Math.floor(Math.random() * (width * 0.32 - width * 0.19) + width * 0.19); //(400 - 300) + 300
             // console.log(aPipeline[aPipeline.length-1].x);
             pipelineX = aPipeline[aPipeline.length - 1].x + betweenX;
         }
-        upPipelineH = Math.ceil(Math.random() * allPipelineH);
+        upPipelineH = Math.floor(Math.random() * allPipelineH);
         // console.log("upH: "+upPipelineH);
         downPipelineH = allPipelineH - upPipelineH;
         // console.log("dnH: "+downPipelineH);
@@ -59,15 +57,15 @@ Pipeline.prototype = {
         this.draw();
     },
     init: function (w, ow, uh, dh, oh, x, uy, dy, ouy, ody, state) {
-        this.w = w;//管道的宽度
-        this.ow = ow;//管道口的宽度
-        this.uh = uh;//上管道高度
-        this.dh = dh;//下管道高度
-        this.oh = oh;//管道口高度
+        this.w = w; //管道的宽度
+        this.ow = ow; //管道口的宽度
+        this.uh = uh; //上管道高度
+        this.dh = dh; //下管道高度
+        this.oh = oh; //管道口高度
         this.x = x;
-        this.ox = this.x - (pipelineOutPW - pipelinePW)/2;//this.x - 5;->this.x - (pipelineOutPW - pipelinePW)/2
-        this.uy = uy;//上管道y偏移量
-        this.dy = dy;//下管道y偏移量
+        this.ox = this.x - (pipelineOutPW - pipelinePW) / 2; //this.x - 5;->this.x - (pipelineOutPW - pipelinePW)/2
+        this.uy = uy; //上管道y偏移量
+        this.dy = dy; //下管道y偏移量
         this.ouy = ouy;
         this.ody = ody;
         this.state = state;
@@ -80,16 +78,16 @@ Pipeline.prototype = {
         // ctx.drawImage(this.piplineOutPicture,this.x,this.y,this.ow,this.oh);
         // console.log(this.state+"  :state");
         if (this.state === 0) {
-            ctx.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
-            ctx.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
-            ctx.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
-            ctx.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
-        } else if (this.state === 1) {//只有上管道
-            ctx.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
-            ctx.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
-        } else if (this.state === 2) {//只有下管道
-            ctx.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
-            ctx.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
+            ctx2.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
+            ctx2.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
+            ctx2.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
+            ctx2.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
+        } else if (this.state === 1) { //只有上管道
+            ctx2.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
+            ctx2.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
+        } else if (this.state === 2) { //只有下管道
+            ctx2.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
+            ctx2.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
         }
 
     },
@@ -97,24 +95,23 @@ Pipeline.prototype = {
         this.x--;
         this.ox--;
         if (this.state === 0) {
-            ctx.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
-            ctx.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
-            ctx.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
-            ctx.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
-        } else if (this.state === 1) {//只有上管道
-            ctx.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
-            ctx.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
-        } else if (this.state === 2) {//只有下管道
-            ctx.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
-            ctx.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
+            ctx2.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
+            ctx2.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
+            ctx2.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
+            ctx2.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
+        } else if (this.state === 1) { //只有上管道
+            ctx2.drawImage(this.pipelinePicture, this.x, this.uy, this.w, this.uh);
+            ctx2.drawImage(this.inPipelineOutPicture, this.ox, this.ouy, this.ow, this.oh);
+        } else if (this.state === 2) { //只有下管道
+            ctx2.drawImage(this.pipelinePicture, this.x, this.dy, this.w, this.dh);
+            ctx2.drawImage(this.pipelineOutPicture, this.ox, this.ody, this.ow, this.oh);
         }
 
 
     }
 };
 
-function Cloud() {
-}
+function Cloud() {}
 
 let aCloud = [];
 Cloud.prototype = {
@@ -130,8 +127,7 @@ Cloud.prototype = {
     },
 };
 
-function Sky() {
-}
+function Sky() {}
 
 Sky.prototype = {
     init: function (w, h) {
@@ -144,8 +140,7 @@ Sky.prototype = {
     }
 };
 
-function BGCloud() {
-}
+function BGCloud() {}
 
 BGCloud.prototype = {
     init: function (w, h) {
@@ -158,8 +153,7 @@ BGCloud.prototype = {
     }
 };
 
-function House() {
-}
+function House() {}
 
 let aHouse = [];
 House.prototype = {
@@ -175,11 +169,11 @@ House.prototype = {
     },
 };
 
-function Floor() {
-}
+function Floor() {}
 
 let aFloor = [];
 Floor.prototype = {
+
     init: function (w, h, x, y) {
         this.w = w;
         this.h = h;
@@ -189,79 +183,82 @@ Floor.prototype = {
         this.picture = floorImg;
     },
     draw: function () {
-        ctx.drawImage(this.picture, this.x, this.y, this.w, this.h);
+        ctx2.drawImage(this.picture, this.x, this.y, this.w, this.h);
     },
     move: function () {
         if (this.x < 0 && Math.abs(this.x) === this.w - 1) {
             this.x = (floorNumber - 1) * this.w - floorNumber;
             this.draw();
         } else {
-            ctx.drawImage(this.picture, this.x - 1, this.y, this.w, this.h);
+            ctx2.drawImage(this.picture, this.x - 1, this.y, this.w, this.h);
             this.x--;
         }
 
     }
 };
 
-function createCan() {
-    let sky = new Sky();
-    sky.init(width, height);
-    sky.draw();
-    let bgCloud = new BGCloud();
-    bgCloud.init(bgCloudPW, bgCloudPH);
-    bgCloud.draw();
-    for (let i = 0; i < floorNumber; i++) {
-        let floor = new Floor();
-        // floor.init(floorPW, floorPH, i * (floorPW - 1), 505);
-        floor.init(floorPW, floorPH, i * (floorPW - 1), height - floorPH);
-        floor.draw();
-        aFloor.push(floor);
+function createCan(state) {
+    if (state == null) {
+        let sky = new Sky();
+        sky.init(width, height);
+        sky.draw();
+        let bgCloud = new BGCloud();
+        bgCloud.init(bgCloudPW, bgCloudPH);
+        bgCloud.draw();
+        for (let i = 0; i < floorNumber; i++) {
+            let floor = new Floor();
+
+            // floor.init(floorPW, floorPH, i * (floorPW - 1), 505);
+            floor.init(floorPW, floorPH, i * (floorPW - 1), height - floorPH);
+            floor.draw();
+            aFloor.push(floor);
+        }
+        for (let j = 0; j < houseNumber; j++) {
+            let house = new House();
+            // house.init(housePW, housePH, j * (housePW), 425);
+            house.init(housePW, housePH, j * (housePW), height - floorPH - housePH);
+            house.draw();
+            aHouse.push(house);
+        }
+        for (let k = 0; k < cloudNumber; k++) {
+            let cloud = new Cloud();
+            cloud.init(cloudPW, cloudPH, k * (cloudPW), bgCloudPH);
+            cloud.draw();
+            aCloud.push(cloud);
+        }
     }
-    for (let j = 0; j < houseNumber; j++) {
-        let house = new House();
-        // house.init(housePW, housePH, j * (housePW), 425);
-        house.init(housePW, housePH, j * (housePW), height - floorPH - housePH);
-        house.draw();
-        aHouse.push(house);
-    }
-    for (let k = 0; k < cloudNumber; k++) {
-        let cloud = new Cloud();
-        cloud.init(cloudPW, cloudPH, k * (cloudPW), bgCloudPH);
-        cloud.draw();
-        aCloud.push(cloud);
-    }
+
     for (let l = 0; l < 6; l++) { //5
         let channel = new Pipeline();
         channel.autoCreate(aPipeline);
         aPipeline.push(channel);
 
     }
-
     gameProgress = setInterval(function () {
         let pipeline;
-        ctx.beginPath();
-        ctx.clearRect(0, 0, width, height);
-        sky.draw();
-        bgCloud.draw();
+        ctx2.beginPath();
+        ctx2.clearRect(0, 0, width, height);
+        // sky.draw();
+        // bgCloud.draw();
 
-        for (let house of aHouse) {
-            house.draw();
-        }
-        for (let cloud of aCloud) {
-            cloud.draw();
-        }
+        // for (let house of aHouse) {
+        //     house.draw();
+        // }
+        // for (let cloud of aCloud) {
+        //     cloud.draw();
+        // }
         if (gameState === 1) {
+            checkGameState();
             for (pipeline of aPipeline) {
                 pipeline.move();
             }
             recordScore();
-            checkGameState();
         } else if (gameState === 0) {
             for (pipeline of aPipeline) {
                 pipeline.draw();
             }
         }
-        if (aPipeline.length === 6 && aPipeline[0].x < -120) {//5
+        if (aPipeline.length === 6 && aPipeline[0].x < -120) { //5
             let channel = new Pipeline();
             channel.autoCreate(aPipeline);
             aPipeline.shift();
@@ -282,9 +279,8 @@ function createCan() {
 */
 
 let fallDownTimer;
-let flyUpTime = 0;//记录鼠标点击事件，则是小鸟向上飞的次数
-function Bird() {
-}
+let flyUpTime = 0; //记录鼠标点击事件，则是小鸟向上飞的次数
+function Bird() {}
 
 Bird.prototype = {
     init: function (w, h, x, y) {
@@ -378,7 +374,7 @@ Bird.prototype = {
             ctx1.rotate(-4 * this.angle * Math.PI / 180);
             ctx1.drawImage(birdStaticImg, -this.w / 2, -this.h / 2, this.w, this.h);
             ctx1.restore();
-            if (this.y >= height - floorPH - birdPH){
+            if (this.y >= height - floorPH - birdPH) {
                 clearInterval(fallDownTimer);
             }
         }.bind(this), 1000 / 60)

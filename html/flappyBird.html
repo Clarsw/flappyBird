@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>FlappyBird</title>
     <meta charset="UTF-8">
-    <!-- meta使用viewport以确保页面可自由缩放 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- 引入 jQuery Mobile 样式 -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <!-- 引入 jQuery 库 -->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <!-- 引入 jQuery Mobile 库 -->
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <title>Title</title>
     <link href="../css/main.css" type="text/css" rel="stylesheet">
 </head>
+
 <body>
-<div class="container">
-    <canvas id="background"></canvas>
-    <canvas id="bird"></canvas>
-    <div id="start-game-panel" class="pop-up">
-        <div class="start-box">
-            <p id="start-banner" class="banner">飞扬的小鸟</p>
-            <div class="start-game fun-btn">
-                <p id="start-btn" onclick="startGame('1')">难度一</p>
-            </div>
-            <div class="start-game-2 fun-btn">
-                <p id="start-btn1" onclick="startGame('2')">难度二</p>
-            </div>
-            <div class="check-score fun-btn">
-                <p id="check-score-btn fun-btn" onclick="showHistoryScore()">历史分数</p>
-            </div>
-            <div class="clear-score fun-btn">
-                <p id="clear-score-btn fun-btn" onclick="clearHistoryScore()">清除记录</p>
-            </div>
+    <div id="progress-box">
+        <div id="myProgress">
+            <div id="myBar">0%</div>
         </div>
     </div>
-
-    <div id="stop-game-panel" class="pop-up">
-        <div class="end-box">
-            <p id="stop-banner" class="banner">Game Over</p>
-            <div class="score">
-                <p class="score">分数</p>
-                <p id="final-score" class="score">0</p>
-            </div>
-            <div class="submit-score fun-btn">
-                <p id="submit-score-btn" onclick="submitScore()">提交分数</p>
-            </div>
-            <div class="restart-game fun-btn">
-                <p id="restart-btn" onclick="restartGame()">重新开始</p>
-            </div>
-            <div class="back-home fun-btn">
-                <p id="back-btn" onclick="backHomePage()">返回首页</p>
+    <div class="container">
+        <canvas id="background"></canvas>
+        <canvas id="floor"></canvas>
+        <canvas id="bird"></canvas>
+        <div id="start-game-panel" class="pop-up" style="display: none;">
+            <div class="start-box">
+                <p id="start-banner" class="banner">飞扬的小鸟</p>
+                <div class="start-game fun-btn">
+                    <p id="start-btn" onclick="startGame('1')">难度一</p>
+                </div>
+                <div class="start-game-2 fun-btn">
+                    <p id="start-btn1" onclick="startGame('2')">难度二</p>
+                </div>
+                <div class="check-score fun-btn">
+                    <p id="check-score-btn fun-btn" onclick="showHistoryScore()">历史分数</p>
+                </div>
+                <div class="clear-score fun-btn">
+                    <p id="clear-score-btn fun-btn" onclick="clearHistoryScore()">清除记录</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="history-score" class="history">
-        <p class="close-history" onclick="scorePanelController(false)">X</p>
-        <div class="title"><p>排行榜</p></div>
-        <div class="history-score-box">
-            <div class="list-title">
-                <ul>
-                    <li>
-                        <span class="rank">排行</span>
-                        <span class="time">时间</span>
-                        <span class="history-score">分数</span>
+        <div id="stop-game-panel" class="pop-up">
+            <div class="end-box">
+                <p id="stop-banner" class="banner">Game Over</p>
+                <div class="score">
+                    <p class="score">分数</p>
+                    <p id="final-score" class="score">0</p>
+                </div>
+                <div class="submit-score fun-btn">
+                    <p id="submit-score-btn" onclick="submitScore()">提交分数</p>
+                </div>
+                <div class="restart-game fun-btn">
+                    <p id="restart-btn" onclick="restartGame()">重新开始</p>
+                </div>
+                <div class="back-home fun-btn">
+                    <p id="back-btn" onclick="backHomePage()">返回首页</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="history-score" class="history">
+            <p class="close-history" onclick="scorePanelController(false)">X</p>
+            <div class="title">
+                <p>排行榜</p>
+            </div>
+            <div class="history-score-box">
+                <div class="list-title">
+                    <ul>
+                        <li>
+                            <span class="rank">排行</span>
+                            <span class="time">时间</span>
+                            <span class="history-score">分数</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-contain">
+                </div>
+            </div>
+            <div class="pagination-outer">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true" onclick="showCurrentPage('pre')">«</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <span class="page-mark">1</span>
+                    </li>
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Next">
+                            <span aria-hidden="true" onclick="showCurrentPage('aft')">»</span>
+                        </a>
                     </li>
                 </ul>
             </div>
-            <div class="list-contain">
-            </div>
-        </div>
-        <div class="pagination-outer">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a href="#" class="page-link" aria-label="Previous">
-                        <span aria-hidden="true" onclick="showCurrentPage('pre')">«</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                        <span class="page-mark">1</span>
-                </li>
-                <li class="page-item">
-                    <a href="#" class="page-link" aria-label="Next">
-                        <span aria-hidden="true" onclick="showCurrentPage('aft')">»</span>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
-</div>
 </body>
 <script src="../js/ImportRes.js" type="text/javascript"></script>
 <script src="../js/GameMain.js" type="text/javascript"></script>
