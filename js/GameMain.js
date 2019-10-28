@@ -301,7 +301,7 @@ Bird.prototype = {
                         ctx1.save();
                         this.y = this.y - 8;
                         ctx1.beginPath();
-                        ctx1.clearRect(0, 0, 1110, 640);
+                        ctx1.clearRect(0, 0, width, height);
                         ctx1.translate(this.x + this.w / 2, this.y + this.h / 2);
                         ctx1.rotate(-4 * this.angle * Math.PI / 180);
                         ctx1.drawImage(aBird[i % 4], -this.w / 2, -this.h / 2, this.w, this.h);
@@ -314,7 +314,7 @@ Bird.prototype = {
                         ctx1.save();
                         this.y = this.y - 4;
                         ctx1.beginPath();
-                        ctx1.clearRect(0, 0, 1110, 640);
+                        ctx1.clearRect(0, 0, width, height);
                         ctx1.translate(this.x + this.w / 2, this.y + this.h / 2);
                         ctx1.rotate(-4 * this.angle * Math.PI / 180);
                         ctx1.drawImage(aBird[i % 4], -this.w / 2, -this.h / 2, this.w, this.h);
@@ -327,7 +327,7 @@ Bird.prototype = {
                         ctx1.save();
                         this.y = this.y - 2;
                         ctx1.beginPath();
-                        ctx1.clearRect(0, 0, 1110, 640);
+                        ctx1.clearRect(0, 0, width, height);
                         ctx1.translate(this.x + this.w / 2, this.y + this.h / 2);
                         ctx1.rotate(-4 * this.angle * Math.PI / 180);
                         ctx1.drawImage(aBird[i % 4], -this.w / 2, -this.h / 2, this.w, this.h);
@@ -360,7 +360,7 @@ Bird.prototype = {
             // console.log(this.angle+"::::");
             ctx1.save();
             ctx1.beginPath();
-            ctx1.clearRect(0, 0, 1110, 640);
+            ctx1.clearRect(0, 0, width, height);
             //自由落体 V2=V0+a(t2-t1)
             this.v = this.v + 10 * (1 / 60);
             // console.log(this.v);
