@@ -72,6 +72,7 @@ const Loading = {
           clearInterval(progressTimer);
           initGame();
           startGamePanelController(true);
+          stopGamePanelController(false);
           document.getElementById('progress-box').style.display = 'none';
         }
       } else {

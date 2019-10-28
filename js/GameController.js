@@ -2,8 +2,8 @@
 
 let loadingCheck;
 let gameHard = 1;
-let height = window.innerHeight;
-let width = window.innerWidth;
+let height;
+let width;
 
 /** 
  *构建背景画布
@@ -48,8 +48,8 @@ let currentPage;
 let submitState = 0;
 let score = 0;
 let bird;
-let birdPH = 20; //28
-let birdPW = 28; //40
+let birdPH; //28 20
+let birdPW; //40 28
 let birdCurrentLocation;
 let pipelinePW;
 let pipelinePH;
@@ -109,9 +109,20 @@ function beforeInit() {
 
 function initGame(state) {
     if (state == null) {
+        height = window.innerHeight;
+        width = window.innerWidth;
+        c.width = width;
+        c.height = height;
+        c1.width = width;
+        c1.height = height;
+        c2.width = width;
+        c2.height = height;
         if (height >= 500) {
             birdPH = 28;
             birdPW = 40;
+        } else {
+            birdPH = 20;
+            birdPW = 28;
         }
         pipelineImg = img[0];
         inPipelineOutImg = img[1];

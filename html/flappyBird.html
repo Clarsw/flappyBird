@@ -98,7 +98,20 @@
 <script src="../js/GameController.js" type="text/javascript"></script>
 <script>
     window.onload = function () {
-        beforeInit();
+        if ((window.innerWidth < window.innerHeight)) {
+            alert("请使用横屏打开！")
+        } else {
+            beforeInit();
+        }
+        window.onresize = function () {
+            if ((window.innerWidth < window.innerHeight)) {
+                alert("请使用横屏打开！")
+            } else {
+                clearInterval(gameProgress);
+                beforeInit();
+
+            }
+        }
     };
 </script>
 
